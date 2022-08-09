@@ -1,0 +1,7 @@
+power_data=read.table("globalpower.txt",header = TRUE)
+plot(strptime(paste(power_data$Date, power_data$Time),format="%d/%m/%Y %H:%M:%S"),as.numeric(power_data$Sub_metering_1), type = 'l',xlab = "",ylab = "Energy sub metering")
+lines(strptime(paste(power_data$Date, power_data$Time),format="%d/%m/%Y %H:%M:%S"),as.numeric(power_data$Sub_metering_2), type = 'l', col="red")
+lines(strptime(paste(power_data$Date, power_data$Time),format="%d/%m/%Y %H:%M:%S"),as.numeric(power_data$Sub_metering_3), type = 'l', col="blue")
+legend(x="topright", legend=c("sub_metring_1","sub_metering_2","sub_metering_3"),col=c("black","red","blue"),lty = 1)
+dev.copy(png,'plot3.png')
+dev.off()
